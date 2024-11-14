@@ -1,24 +1,41 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import App from "./App";
-import { Header } from "./Header";
-import Hello from "./Hello";
-import Car from "./Car";
-import Login from "./Login";
-function RouterWeb() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/hello" element={<Hello />} />
-        <Route path="/car" element={<Car />} />
-        <Route
-          path="*"
-          element={<h1>Không tìm thấy trang web theo yêu cầu</h1>}
-        />
-      </Routes>
-    </Router>
-  );
-}
+import Hello from "../src/components/Hello";
+import Car from "../src/components/Car";
+import Login from "../src/components/Login";
+import ShowAllNhom from "../src/components/showAllNhom";
 
-export default RouterWeb;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "hello",
+        element: <Hello />,
+      },
+      {
+        path: "car",
+        element: <Car />,
+      },
+      {
+        path: "showAllNhom",
+        element: <ShowAllNhom />,
+      },
+    ],
+  },
+]);
+
+function RouteWeb() {
+  return <RouterProvider router={router} />;
+}
+export default RouteWeb;
