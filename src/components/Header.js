@@ -4,7 +4,7 @@ function Item({ props }) {
   return (
     <>
       <li className="nav-item">
-        <Link className="nav-link active" aria-current="page" to="{props.link}">
+        <Link className="nav-link active" aria-current="page" to={props.link}>
           {props.content}
         </Link>
       </li>
@@ -50,6 +50,8 @@ function Header() {
     { link: "/login", content: "login" },
     { link: "/car", content: "car" },
     { link: "/hello", content: "hello" },
+    { link: "/showAllNhom", content: "Quản Lý Nhóm" },
+    { link: "/showAllSanPham", content: "Quản Lý Sản Phẩm" },
   ];
   return <Menu list={listAddress} />;
 }

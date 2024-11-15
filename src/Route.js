@@ -9,6 +9,8 @@ import Hello from "../src/components/Hello";
 import Car from "../src/components/Car";
 import Login from "../src/components/Login";
 import ShowAllNhom from "../src/components/showAllNhom";
+import ShowAllSanPham from "../src/components/showAllSanPham";
+import AddNhom from "../src/components/addNhom";
 
 const router = createBrowserRouter([
   {
@@ -27,9 +29,19 @@ const router = createBrowserRouter([
         path: "car",
         element: <Car />,
       },
+      // Nhom
       {
         path: "showAllNhom",
         element: <ShowAllNhom />,
+      },
+      {
+        path: "addNhom",
+        element: <AddNhom />,
+      },
+      // San Pham
+      {
+        path: "showAllSanPham",
+        element: <ShowAllSanPham />,
       },
     ],
   },

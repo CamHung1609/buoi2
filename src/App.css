@@ -39,3 +39,16 @@
 div {
   margin-top: 10px;
 }
+.truncate-multiline {
+  overflow: hidden;
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  line-height: 2rem;
+}
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
