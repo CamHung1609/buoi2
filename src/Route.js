@@ -8,9 +8,10 @@ import App from "./App";
 import Hello from "../src/components/Hello";
 import Car from "../src/components/Car";
 import Login from "../src/components/Login";
-import ShowAllNhom from "../src/components/showAllNhom";
-import ShowAllSanPham from "../src/components/showAllSanPham";
-import AddNhom from "../src/components/addNhom";
+import ShowAllNhom from "../src/components/ShowAllNhom";
+import ShowAllSanPham from "../src/components/ShowAllSanPham";
+import AddNhom from "../src/components/AddNhom";
+import Profile from "../src/components/Profile";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
       {
         path: "showAllSanPham",
         element: <ShowAllSanPham />,
+      },
+      // profile
+      {
+        path: "profile",
+        element: <Profile />,
       },
     ],
   },

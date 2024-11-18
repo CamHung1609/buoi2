@@ -1,4 +1,9 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../contexts/AppContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function Item({ props }) {
   return (
@@ -13,6 +18,15 @@ function Item({ props }) {
 }
 
 function Menu({ list }) {
+  const { dataUser, setDataUser } = useContext(AppContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    axios.post(`${process.env.REACT_APP_API_URL}api/logout`).then(() => {
+      Cookies.remove("accessToken");
+      setDataUser({});
+      navigate("/login");
+    });
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,6 +50,7 @@ function Menu({ list }) {
               {list.map((duongDan, ind) => (
                 <Item key={ind} props={duongDan} />
               ))}
+              <button onClick={handleLogout}>dang xuat</button>
             </ul>
           </div>
         </div>
@@ -45,6 +60,7 @@ function Menu({ list }) {
 }
 
 function Header() {
+  const { dataUser } = useContext(AppContext);
   const listAddress = [
     { link: "/", content: "Home" },
     { link: "/login", content: "login" },
@@ -52,6 +68,7 @@ function Header() {
     { link: "/hello", content: "hello" },
     { link: "/showAllNhom", content: "Quản Lý Nhóm" },
     { link: "/showAllSanPham", content: "Quản Lý Sản Phẩm" },
+    { link: "/profile", content: `${dataUser.username ?? "CHƯA ĐĂNG NHẬP"}` },
   ];
   return <Menu list={listAddress} />;
 }

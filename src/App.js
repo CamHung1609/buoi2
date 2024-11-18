@@ -3,14 +3,16 @@ import "./App.css";
 import Hello, { HelloPerson, Hello2 } from "./components/Hello";
 import { Item, Header } from "./components/Header";
 import { Outlet } from "react-router-dom";
-
+import { AppContext, AppProvider } from "./contexts/AppContext";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <div className="container">
-        <Outlet />
-      </div>
+      <AppProvider>
+        <Header />
+        <div className="container">
+          <Outlet />
+        </div>
+      </AppProvider>
     </div>
   );
 }
